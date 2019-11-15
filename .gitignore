@@ -1,0 +1,23 @@
+# Editor files
+.idea
+
+.env
+
+.glide
+glide.lock
+coverage.out
+coverage-all.out
+server
+vendor/*
+!vendor/vendor.json
+data/*
+download-url-in-go
+
+ever.env
+.env
+dev.env
+
+# Ignore log files
+*.log
+
+.DS_Store
