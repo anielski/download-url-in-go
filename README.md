@@ -1,7 +1,7 @@
 # Retrieving content from a URL at intervals (example of using GoLang).
 author: Adam Nielski
 
-The DashTaxi API uses the following Go packages:
+The app uses the following Go packages:
 
 * Web framework: [echo](https://echo.labstack.com/)
 * Configuration: [viper](https://github.com/spf13/viper)
