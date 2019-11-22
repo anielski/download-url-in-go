@@ -14,7 +14,6 @@ The download-url-in-go project has six main packages:
 
 * `bindings`: The bindings directory will hold all of the protocol-specific data bindings for the application, such as form submission, query string, and JSON representations of application input
 * `handlers`: The handlers package is where you store all your Echo web application-handler code and business logic for the application
-* `middleware`: The middlewares package is where you’ll store all your Echo web application middleware code and business logic that is applicable for more than one handler within the service
 * `models`: Within an application, you’ll have application-specific data structures that you will need to persist to a database. The models package will house the application-specific types.
 * `renderings`: The renderings package will contain all the data structures and types that will be serialized back to the caller through the http.ResponseWriter
 * `vendor`: contains all third party libraries
