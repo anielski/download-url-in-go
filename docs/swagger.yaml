@@ -1,0 +1,164 @@
+definitions:
+  bindings.Fetcher:
+    properties:
+      id:
+        type: integer
+      interval:
+        type: integer
+      url:
+        type: string
+    required:
+    - interval
+    - url
+    type: object
+  echo.HTTPError:
+    properties:
+      code:
+        type: integer
+      internal:
+        type: error
+      message:
+        type: object
+    type: object
+  renderings.Fetcher:
+    properties:
+      id:
+        type: integer
+    type: object
+  renderings.Fetchers:
+    properties:
+      id:
+        type: integer
+      interval:
+        type: integer
+      url:
+        type: string
+    type: object
+  renderings.History:
+    properties:
+      response:
+        items:
+          $ref: '#/definitions/renderings.Response'
+        type: array
+    type: object
+  renderings.Response:
+    properties:
+      created_at:
+        type: string
+      duration:
+        type: number
+      response:
+        type: string
+    type: object
+info:
+  contact: {}
+  license: {}
+paths:
+  /api/fetcher:
+    get:
+      description: get all fetcher - not delete
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/renderings.Fetchers'
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/echo.HTTPError'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/echo.HTTPError'
+            type: object
+      summary: Get All fetcher
+      tags:
+      - API
+    post:
+      consumes:
+      - application/json
+      description: insert or update fetcher
+      parameters:
+      - description: Transaction Data
+        in: body
+        name: verification
+        required: true
+        schema:
+          $ref: '#/definitions/bindings.Fetcher'
+          type: object
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/renderings.Fetcher'
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/echo.HTTPError'
+            type: object
+        "413":
+          description: Request Entity Too Large
+          schema:
+            $ref: '#/definitions/echo.HTTPError'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/echo.HTTPError'
+            type: object
+      summary: Save fetcher
+      tags:
+      - API
+  /api/fetcher/{id}:
+    delete:
+      description: set fetcher as delete
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/renderings.Fetcher'
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/echo.HTTPError'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/echo.HTTPError'
+            type: object
+      summary: Delete fetcher
+      tags:
+      - API
+  /api/fetcher/{id}/history:
+    get:
+      description: get all fetcher - not delete
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/renderings.History'
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/echo.HTTPError'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/echo.HTTPError'
+            type: object
+      summary: Get All fetcher
+      tags:
+      - API
